@@ -1,0 +1,2 @@
+# mt_plugin_ImportAuthor
+ユーザーを一括登録してロール割当をするプラグイン「
