@@ -1,0 +1,68 @@
+<mt:setvarblock name="page_title"><__trans phrase="ImportAuthor"></mt:setvarblock>
+<mt:setvar name="position_actions_bottom" value="1">
+
+<mt:setvarblock name="system_msg">
+    <div id="msg-block">
+    <mt:if name="saved">
+        <mtapp:statusmsg
+            id="saved"
+            class="success">
+            <__trans phrase="Authors has been imported.">
+        </mtapp:statusmsg>
+    </mt:if>
+    </div>
+<mt:loop name="errors">
+    <div id="msg-block">
+        <mtapp:statusmsg class="error">
+            <mt:var name="__value__" escape="html">
+        </mtapp:statusmsg>
+    </div>
+</mt:loop>
+</mt:setvarblock>
+
+<mt:setvarblock name="html_head" append="1">
+<style type="text/css">
+  label.error {color : #FF0000; margin-left : 10px;}
+</style>
+<script type="text/javascript">
+jQuery(function() {
+  jQuery('#upload-import-author').validate({
+    onkeyup: false,
+    messages: {
+      csv_file: {
+        required: "<__trans phrase="Required">"
+      }
+    }
+  });
+});
+</script>
+</mt:setvarblock>
+
+<mt:include name="include/header.tmpl" id="header_include">
+
+<form name="upload-import-author" id="upload-import-author" method="post" action="<mt:var name="script_url">" enctype="multipart/form-data">
+    <input type="hidden" name="blog_id" value="<mt:var name="blog_id" escape="html">" />
+    <input type="hidden" name="__mode" value="process_upload_author" />
+    <input type="hidden" name="magic_token" value="<mt:var name="magic_token" escape="html">" />
+
+    <mtapp:setting
+        id="csv_file"
+        label="<__trans phrase="Select File">"
+        hint="<__trans phrase="Select File">" >
+        <input type="file" name="csv_file" class="required" />
+    </mtapp:setting>
+
+<mt:setvarblock name="action_buttons">
+    <button
+        id="submit_generate_mailmaga"
+        type="submit"
+        title="<__trans phrase="Upload">"
+        class="button primary action primary-button"
+        ><__trans phrase="Upload"></button>
+    <p id="checking_entry_and_directory" style="display:none"><__trans phrase="Checking entry and directory..."></p>
+</mt:setvarblock>
+<mt:include name="include/actions_bar.tmpl" bar_position="bottom" hide_pager="1" settings_bar="1">
+
+</form>
+
+<mt:include name="include/footer.tmpl" id="footer_include">

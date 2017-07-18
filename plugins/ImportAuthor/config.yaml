@@ -1,0 +1,20 @@
+name: ImportAuthor
+id: ImportAuthor
+author_name: <__trans phrase="_AUTHOR_NAME">
+description: <__trans phrase="_PLUGIN_DESCRIPTION">
+version: 1.0
+l10n_class: ImportAuthor::L10N
+
+applications:
+    cms:
+        methods:
+            upload_author: $ImportAuthor::ImportAuthor::Plugin::upload_author
+            process_upload_author: $ImportAuthor::ImportAuthor::Plugin::process_upload_author
+        menus:
+            user:upload_author:
+                label: ImportAuthor
+                order: 10000
+                mode: upload_author
+                condition: $ImportAuthor::ImportAuthor::Plugin::upload_author_condition
+                view:
+                    - system
