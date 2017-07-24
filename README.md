@@ -19,7 +19,7 @@ ARK-Web/mt_plugin_ImportAuthor - ユーザーを一括登録してロール割�
 ### ダウンロード
 
 * [https://github.com/ARK-Web/mt_plugin_ImportAuthor](https://github.com/ARK-Web/mt_plugin_ImportAuthor)
-* ライセンス: 後ほど (TBD)
+* ライセンス: MIT License
 
 
 ### インストール
